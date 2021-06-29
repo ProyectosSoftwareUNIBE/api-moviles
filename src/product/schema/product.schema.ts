@@ -10,6 +10,10 @@ export class Product {
   description: string;
   @Prop()
   imageUrl: string;
+  @Prop()
+  price: number
+  @Prop()
+  category: string;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

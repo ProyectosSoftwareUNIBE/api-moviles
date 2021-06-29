@@ -3,8 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductModule } from './product/product.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './auth/auth.module';
 @Module({
-  imports: [ProductModule, MongooseModule.forRoot('mongodb://localhost/nest')],
+  imports: [ProductModule, MongooseModule.forRoot('mongodb+srv://rafael:edu900fs@unibe.7ujmc.azure.mongodb.net/unibe?retryWrites=true&w=majority'), AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

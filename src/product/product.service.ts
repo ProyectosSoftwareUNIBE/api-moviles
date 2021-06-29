@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, PreMiddlewareFunction } from 'mongoose';
 import { ProductDto } from './dto/product.dto';
 import { Product, ProductDocument } from './schema/product.schema';
 
@@ -9,11 +9,16 @@ export class ProductService {
   constructor(
     @InjectModel('Product')
     private readonly productModel: Model<ProductDocument>,
-  ) {}
+  ) { }
 
   async createProduct(productDto: ProductDto): Promise<Product> {
     const product = new this.productModel(productDto);
     return product.save();
+  }
+
+  async getPropductByCategory(categoryName: string): Promise<Product[]> {
+    const products = await this.productModel.find({ category: categoryName });
+    return products;
   }
 
   async getProducts(): Promise<Product[]> {

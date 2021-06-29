@@ -16,7 +16,7 @@ import { throwStatement } from '@babel/types';
 
 @Controller('product')
 export class ProductController {
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) { }
 
   @Post()
   async createProduct(@Res() res, @Body() productDto: ProductDto) {
@@ -29,6 +29,12 @@ export class ProductController {
   @Get()
   async getProducs(@Res() res) {
     const products = await this.productService.getProducts();
+    return res.status(HttpStatus.OK).json(products);
+  }
+
+  @Get('/category/:category')
+  async getProducsByCategory(@Res() res, @Param('category') category: string) {
+    const products = await this.productService.getPropductByCategory(category);
     return res.status(HttpStatus.OK).json(products);
   }
 

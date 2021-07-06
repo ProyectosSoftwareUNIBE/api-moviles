@@ -5,12 +5,12 @@ import { UserDocument } from './schema/user.schema';
 
 @Injectable()
 export class AuthService {
-    constructor(@InjectModel('User') private readonly userModel: Model<UserDocument>) {
+  constructor(
+    @InjectModel('User') private readonly userModel: Model<UserDocument>,
+  ) {}
 
-    }
-
-    async findUser(nameUser: string): Promise<any> {
-        const user = await this.userModel.findOne({ name: nameUser });
-        return user;
-    }
+  async findUser(nameUser: string): Promise<any> {
+    const user = await this.userModel.findOne({ name: nameUser });
+    return user;
+  }
 }

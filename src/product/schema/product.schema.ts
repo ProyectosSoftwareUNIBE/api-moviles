@@ -11,7 +11,7 @@ export class Product {
   @Prop()
   imageUrl: string;
   @Prop()
-  price: number
+  price: number;
   @Prop()
   category: string;
 }

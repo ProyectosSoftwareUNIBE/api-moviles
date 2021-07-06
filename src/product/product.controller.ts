@@ -16,7 +16,7 @@ import { throwStatement } from '@babel/types';
 
 @Controller('product')
 export class ProductController {
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {}
 
   @Post()
   async createProduct(@Res() res, @Body() productDto: ProductDto) {
